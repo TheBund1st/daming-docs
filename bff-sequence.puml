@@ -1,0 +1,11 @@
+@startuml
+UserAgent -> BFF: POST /api/sms/verification/code
+BFF -> DamingAAS: POST /api/sms/verification/code
+UserAgent -> BFF: POST /api/sms/verification/required with sms verification code
+BFF -> DamingAAS: DELETE /api/sms/verification/code
+DamingAAS --> BFF: a JWT
+BFF -> YourService: POST /api/sms/verification/required with JWT
+YourService -> YourService: verify JWT & mobile
+YourService --> BFF: returns
+BFF --> UserAgent: returns
+@enduml

@@ -1,0 +1,8 @@
+@startuml
+UserAgent -> DamingAAS: POST /api/sms/verification/code
+UserAgent -> DamingAAS: DELETE /api/sms/verification/code
+DamingAAS --> UserAgent: a JWT
+UserAgent-> YourService: POST /api/sms/verification/required with JWT
+YourService -> YourService: verify JWT & mobile
+YourService --> UserAgent: returns
+@enduml

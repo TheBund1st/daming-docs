@@ -1,0 +1,7 @@
+@startuml
+UserAgent -> YourMonolithic: POST /api/sms/verification/code (Provided by Daming)
+UserAgent -> YourMonolithic: POST /api/sms/verification/required
+YourMonolithic -> SmsVerificationCommandHandler: verify(VerifySmsVerificationCodeCommand)
+YourMonolithic -> xxxCommandHandler: handleBusinessCommand(command)
+YourMonolithic --> UserAgent: returns
+@enduml
